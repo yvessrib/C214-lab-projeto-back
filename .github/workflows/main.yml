@@ -13,10 +13,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Configurar Node.js
+    - name: Configurar Node.js 22
       uses: actions/setup-node@v4
       with:
-        node-version: 16
+        node-version: 22
 
     - name: Install Dependencies
       run: npm install
