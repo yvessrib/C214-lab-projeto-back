@@ -1,0 +1,25 @@
+name: Typescript CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 16
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build TypeScript
+      run: npm run build
