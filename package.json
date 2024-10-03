@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx --env-file .env src/http/server.ts watch",
-    "build": "tsc && cp .env dist/.env" 
+    "build": "rimraf ./build && tsc" 
   },
   "keywords": [],
   "author": "",
