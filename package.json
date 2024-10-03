@@ -1,0 +1,30 @@
+{
+  "name": "c214-lab-projeto-back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx --env-file .env src/http/server.ts watch",
+    "build": "tsc && cp .env dist/.env" 
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@biomejs/biome": "^1.9.3",
+    "@fastify/cors": "^10.0.1",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "@types/node": "^22.7.4",
+    "dayjs": "^1.11.13",
+    "drizzle-kit": "^0.24.2",
+    "drizzle-orm": "^0.33.0",
+    "fastify": "^5.0.0",
+    "fastify-type-provider-zod": "^4.0.1",
+    "postgres": "^3.4.4",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {}
+}
