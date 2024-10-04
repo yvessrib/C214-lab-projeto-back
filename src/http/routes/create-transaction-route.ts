@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { createTransaction } from '../../functions/create-transaction'
+import { db } from '../../db'
 
 
 export const createTransactionRoute: FastifyPluginAsyncZod = async app => {

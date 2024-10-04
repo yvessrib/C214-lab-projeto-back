@@ -19,6 +19,7 @@ export async function createTransaction(
     endsAt, 
     type
   }: CreateTransactionRequest) {
+
   const result = await db.insert(transactions).values({
     title,
     description,
@@ -26,7 +27,7 @@ export async function createTransaction(
     installments,
     endsAt,
     type,
-  })
+  }).returning();
 
   const transaction = result[0]
 
