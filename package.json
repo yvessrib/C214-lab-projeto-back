@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "tsx --env-file .env src/http/server.ts watch",
     "build": "rimraf ./build && tsc"
   },
@@ -27,6 +27,10 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "rimraf": "^6.0.1"
+    "@types/jest": "^29.5.13",
+    "dotenv": "^16.4.5",
+    "jest": "^29.7.0",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.2.5"
   }
 }
