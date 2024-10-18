@@ -7,6 +7,7 @@ import {
 import fastifyCors from '@fastify/cors'
 import { createTransactionRoute } from './routes/create-transaction-route';
 import { getTransactionsRoute } from './routes/get-transactions-route';
+import { deleTransactionRoute } from './routes/delete-transaction-route';
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -19,6 +20,7 @@ app.setSerializerCompiler(serializerCompiler)
 
 app.register(createTransactionRoute)
 app.register(getTransactionsRoute)
+app.register(deleTransactionRoute)
 
 app.listen({
   port: 3333,
