@@ -1,7 +1,7 @@
 import { pgTable, text, timestamp, integer } from 'drizzle-orm/pg-core'
 import { createId } from '@paralleldrive/cuid2'
 
-export const transactions = pgTable('transacions', {
+export const transactions = pgTable('transactions', {
   id: text('id')
    .primaryKey()
    .$defaultFn(() => createId()),

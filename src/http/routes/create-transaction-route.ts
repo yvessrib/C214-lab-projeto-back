@@ -1,8 +1,7 @@
 import { z } from 'zod'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { createTransaction } from '../../functions/create-transaction'
-import { db } from '../../db'
-
+import { transactions } from '../../db/schema'
 
 export const createTransactionRoute: FastifyPluginAsyncZod = async app => {
   app.post(
@@ -19,10 +18,10 @@ export const createTransactionRoute: FastifyPluginAsyncZod = async app => {
         }),
       },
     },
-    async request => {
+    async (request, reply) => {
       const { title, description, value, installments, endsAt, type} = request.body
 
-      await createTransaction({
+      const transaction = await createTransaction({
         title,
         description,
         value,
@@ -30,6 +29,8 @@ export const createTransactionRoute: FastifyPluginAsyncZod = async app => {
         endsAt: new Date(endsAt),
         type,
       })
+
+      return reply.status(200).send({ transaction })
     }
   )
 }
