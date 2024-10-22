@@ -4,7 +4,7 @@ import { transactions } from "../db/schema";
 interface CreateTransactionRequest {
   title: string;
   description: string;
-  value: string;
+  value: number;
   installments: number;
   endsAt: Date;
   type: string;
@@ -27,7 +27,7 @@ export async function createTransaction(
     installments,
     endsAt,
     type,
-  }).returning();
+  })
 
   const transaction = result[0]
 
