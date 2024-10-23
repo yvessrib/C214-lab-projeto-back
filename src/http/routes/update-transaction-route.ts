@@ -21,7 +21,7 @@ export const updateTransactionRoute: FastifyPluginAsyncZod = async app => {
     async request => {
       const { transactionId, title, description, value, installments, endsAt, type } = request.body
 
-      await updateTransaction(transactionId, { title, description, value, installments, endsAt, type })
+      await updateTransaction(transactionId, { title, description, value: Number(value), installments, endsAt, type })
     }
   )
 }

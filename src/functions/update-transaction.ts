@@ -5,7 +5,7 @@ import { transactions } from "../db/schema";
 interface UpdateTransactionRequest {
   title?: string;
   description?: string;
-  value?: string;
+  value?: number;
   installments?: number;
   endsAt?: Date;
   type?: string;
@@ -31,7 +31,7 @@ export async function updateTransaction(
   if (endsAt !== undefined) updateData.endsAt = endsAt
   if (type !== undefined) updateData.type = type
 
-  const result = await db.update(transactions)
+  await db.update(transactions)
     .set(updateData)
     .where(eq(transactions.id, transactionId))
 

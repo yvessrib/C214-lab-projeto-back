@@ -8,6 +8,7 @@ interface CreateTransactionRequest {
   installments: number;
   endsAt: Date;
   type: string;
+  createdAt: Date;
 }
 
 export async function createTransaction(
@@ -17,7 +18,8 @@ export async function createTransaction(
     value, 
     installments, 
     endsAt, 
-    type
+    type,
+    createdAt
   }: CreateTransactionRequest) {
 
   const result = await db.insert(transactions).values({
@@ -27,6 +29,7 @@ export async function createTransaction(
     installments,
     endsAt,
     type,
+    createdAt
   })
 
   const transaction = result[0]
