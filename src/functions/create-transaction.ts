@@ -1,5 +1,6 @@
 import { db } from "../db";
 import { transactions } from "../db/schema";
+import { updateProjectionForMonth } from "./update-projection-trigger";
 
 interface CreateTransactionRequest {
   title: string;
@@ -31,6 +32,11 @@ export async function createTransaction(
     type,
     createdAt
   })
+
+  const year = createdAt.getFullYear()
+  const month = createdAt.getMonth() + 1
+
+  await updateProjectionForMonth(year, month)
 
   const transaction = result[0]
 

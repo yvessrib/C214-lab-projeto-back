@@ -4,26 +4,24 @@ import { transactions } from "../db/schema";
 
 export async function getIncomeOutcomeOfTheYear(currentYear: string){
   const income = await db.select({
-    totalIncome: sql /*sql*/ `SUM(${transactions.value}::numeric)`
+    totalIncome: sql /*sql*/ `SUM(${transactions.value})`
   })
   .from(transactions)
   .where(
     and(
       eq(transactions.type, 'income'),
-      sql /*sql*/ 
-      `EXTRACT(YEAR FROM ${transactions.createdAt}) = ${currentYear}`
+      sql /*sql*/ `EXTRACT(YEAR FROM ${transactions.createdAt}::timestamp) = ${currentYear}`
     )
   );
 
   const outcome = await db.select({
-    totalOutcome: sql /*sql*/ `SUM(${transactions.value}::numeric)`
+    totalOutcome: sql /*sql*/ `SUM(${transactions.value})`
   })
   .from(transactions)
   .where(
     and(
       eq(transactions.type, 'outcome'),
-      sql /*sql*/ 
-      `EXTRACT(YEAR FROM ${transactions.createdAt}) = ${currentYear}`
+      sql /*sql*/ `EXTRACT(YEAR FROM ${transactions.createdAt}::timestamp) = ${currentYear}`
     )
   );
 

@@ -10,7 +10,7 @@ describe('updateTransaction', () => {
     
     const mockUpdateData = {
       title: 'New Title',
-      value: '150.00',
+      value: 150.00,
     };
 
     (db.update as jest.Mock).mockReturnValue({

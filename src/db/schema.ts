@@ -1,6 +1,5 @@
 import { pgTable, text, timestamp, integer, real } from 'drizzle-orm/pg-core'
 import { createId } from '@paralleldrive/cuid2'
-import { numeric } from 'drizzle-orm/pg-core'
 
 export const transactions = pgTable('transactions', {
   id: text('id')
@@ -11,7 +10,7 @@ export const transactions = pgTable('transactions', {
   value: real('value').notNull(),
   installments: integer('installments').notNull(),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
-  endsAt: timestamp('ends_at', { withTimezone: true }).notNull(),
+  endsAt: timestamp('ends_at', { withTimezone: true }),
   type: text('type').notNull(),
 })
 

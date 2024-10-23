@@ -1,9 +1,61 @@
 {
-  "id": "f2783c61-db9b-4279-8fdb-54959429ab98",
+  "id": "216e46ff-fb6e-47d9-bc6e-fd9279e681af",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.projections": {
+      "name": "projections",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "year": {
+          "name": "year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "month": {
+          "name": "month",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "expected_income": {
+          "name": "expected_income",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "actual_income": {
+          "name": "actual_income",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "actual_outcome": {
+          "name": "actual_outcome",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "public.transactions": {
       "name": "transactions",
       "schema": "",
@@ -28,7 +80,7 @@
         },
         "value": {
           "name": "value",
-          "type": "text",
+          "type": "real",
           "primaryKey": false,
           "notNull": true
         },
@@ -49,7 +101,7 @@
           "name": "ends_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "type": {
           "name": "type",

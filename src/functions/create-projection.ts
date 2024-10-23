@@ -25,15 +25,15 @@ export async function createProjection(
   }
 
   const actual_income = await db
-    .select({
-      value: sql<number> /*sql*/ `SUM(${transactions.value}::numeric)`
+    .select({ 
+      value: sql<number> /*sql*/ `SUM(${transactions.value})`
     })
     .from(transactions)
     .where(
       and(
         sql /*sql*/ `${transactions.type} = 'income'`,
-        sql /*sql*/ `EXTRACT(YEAR FROM ${transactions.createdAt}) = ${year}`,
-        sql /*sql*/ `EXTRACT(MONTH FROM ${transactions.createdAt}) = ${month}`
+        sql /*sql*/ `EXTRACT(YEAR FROM ${transactions.createdAt}::timestamp) = ${year}`,
+        sql /*sql*/ `EXTRACT(MONTH FROM ${transactions.createdAt}::timestamp) = ${month}`
       )
     );
 
@@ -41,14 +41,14 @@ export async function createProjection(
 
   const actual_outcome = await db
     .select({
-      value: sql<number> /*sql*/ `SUM(${transactions.value}::numeric)`
+      value: sql<number> /*sql*/ `SUM(${transactions.value})`
     })
     .from(transactions)
     .where(
       and(
         sql /*sql*/ `${transactions.type} = 'outcome'`,
-        sql /*sql*/ `EXTRACT(YEAR FROM ${transactions.createdAt}) = ${year}`,
-        sql /*sql*/ `EXTRACT(MONTH FROM ${transactions.createdAt}) = ${month}`
+        sql /*sql*/ `EXTRACT(YEAR FROM ${transactions.createdAt}::timestamp) = ${year}`,
+        sql /*sql*/ `EXTRACT(MONTH FROM ${transactions.createdAt}::timestamp) = ${month}`
       )
     );
 
@@ -59,7 +59,8 @@ export async function createProjection(
     month,
     expectedIncome: expectedIncome,
     actualIncome: actualIncome,
-    actualOutcome: actualOutcome
+    actualOutcome: actualOutcome,
+    createdAt: new Date(),
   })
 
   return {

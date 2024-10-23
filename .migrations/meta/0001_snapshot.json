@@ -1,6 +1,6 @@
 {
-  "id": "521bdf21-a725-4744-978e-2071a9700ab8",
-  "prevId": "f2783c61-db9b-4279-8fdb-54959429ab98",
+  "id": "1a778f95-cc5e-4ab1-8381-2327b8f5db04",
+  "prevId": "216e46ff-fb6e-47d9-bc6e-fd9279e681af",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -26,17 +26,23 @@
           "primaryKey": false,
           "notNull": true
         },
-        "expected_value": {
-          "name": "expected_value",
-          "type": "numeric",
+        "expected_income": {
+          "name": "expected_income",
+          "type": "real",
           "primaryKey": false,
           "notNull": true
         },
-        "actual_value": {
-          "name": "actual_value",
-          "type": "numeric",
+        "actual_income": {
+          "name": "actual_income",
+          "type": "real",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
+        },
+        "actual_outcome": {
+          "name": "actual_outcome",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
         },
         "created_at": {
           "name": "created_at",
@@ -75,7 +81,7 @@
         },
         "value": {
           "name": "value",
-          "type": "text",
+          "type": "real",
           "primaryKey": false,
           "notNull": true
         },
@@ -96,7 +102,7 @@
           "name": "ends_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "type": {
           "name": "type",
