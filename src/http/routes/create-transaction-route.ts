@@ -11,7 +11,7 @@ export const createTransactionRoute: FastifyPluginAsyncZod = async app => {
         body: z.object({
           title: z.string(),
           description: z.string(),
-          value: z.string(),
+          value: z.number(),
           installments: z.number(),
           endsAt: z.string(),
           type: z.enum(['outcome', 'income']),
@@ -28,9 +28,10 @@ export const createTransactionRoute: FastifyPluginAsyncZod = async app => {
         installments,
         endsAt: new Date(endsAt),
         type,
+        createdAt: new Date()
       })
 
-      return reply.status(200).send({ transaction })
+      return transaction
     }
   )
 }
