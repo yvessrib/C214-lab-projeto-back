@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest",
     "dev": "tsx --env-file .env src/http/server.ts watch",
-    "build": "rimraf ./build && tsc"
+    "build": "rimraf ./build && tsc",
+    "start": "node build/http/server.js"
   },
   "keywords": [],
   "author": "",

@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
-import { DeleteTransaction } from '../../functions/delete-transaction'
+import { deleteTransaction } from '../../functions/delete-transaction'
 
 export const deleTransactionRoute: FastifyPluginAsyncZod = async app => {
   app.delete(
@@ -15,7 +15,7 @@ export const deleTransactionRoute: FastifyPluginAsyncZod = async app => {
     async request => {
       const { transactionId } = request.body
 
-      const result = await DeleteTransaction(transactionId)
+      const result = await deleteTransaction(transactionId)
 
       return result
     }
