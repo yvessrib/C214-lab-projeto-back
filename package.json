@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest",
     "dev": "tsx --env-file .env src/http/server.ts watch",
-    "build": "rimraf ./build && tsc"
+    "build": "rimraf ./build && tsc",
+    "start": "node build/http/server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "@fastify/cors": "^10.0.1",
     "@paralleldrive/cuid2": "^2.2.2",
     "@types/node": "^22.7.4",
+    "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
     "drizzle-kit": "^0.24.2",
     "drizzle-orm": "^0.33.0",
