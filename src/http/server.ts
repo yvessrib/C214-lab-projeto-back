@@ -34,6 +34,7 @@ app.register(getProjectionsRoute)
 app.register(updateProjectionRoute)
 app.register(deleteProjectionRoute)
 
+
 app.listen({
   port: 3333,
 }).then(() => {

@@ -62,6 +62,7 @@ describe('deleteTransaction', () => {
 
     const result = await deleteTransaction(mockTransactionId);
 
+
     expect(db.select).toHaveBeenCalledTimes(4); // Transaction, projection, income, outcome
     expect(db.delete).toHaveBeenCalledWith(transactions);
     expect(db.update).toHaveBeenCalledWith(projections);
@@ -79,5 +80,6 @@ describe('deleteTransaction', () => {
     });
 
     await expect(deleteTransaction(mockTransactionId)).rejects.toThrow('Transaction not found');
+
   });
 });
