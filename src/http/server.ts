@@ -24,8 +24,10 @@ app.register(getTransactionsRoute)
 app.register(deleTransactionRoute)
 app.register(updateTransactionRoute)
 
+const port = process.env.PORT || 3333
+
 app.listen({
-  port: 3333,
+  port: Number(port)
 }).then(() => {
   console.log('HTTP server running')
 })
