@@ -1,6 +1,6 @@
 import { db } from '../src/db'; 
 import { transactions, projections } from '../src/db/schema';
-import { DeleteTransaction } from '../src/functions/delete-transaction';
+import { deleteTransaction } from '../src/functions/delete-transaction';
 
 jest.mock('../src/db');
 
@@ -60,7 +60,8 @@ describe('deleteTransaction', () => {
       }),
     });
 
-    const result = await DeleteTransaction(mockTransactionId);
+    const result = await deleteTransaction(mockTransactionId);
+
 
     expect(db.select).toHaveBeenCalledTimes(4); // Transaction, projection, income, outcome
     expect(db.delete).toHaveBeenCalledWith(transactions);
@@ -78,6 +79,7 @@ describe('deleteTransaction', () => {
       }),
     });
 
-    await expect(DeleteTransaction(mockTransactionId)).rejects.toThrow('Transaction not found');
+    await expect(deleteTransaction(mockTransactionId)).rejects.toThrow('Transaction not found');
+
   });
 });

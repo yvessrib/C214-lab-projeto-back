@@ -2,7 +2,7 @@ import { eq, and, sql } from "drizzle-orm";
 import { projections, transactions } from "../db/schema";
 import { db } from "../db";
 
-export async function DeleteTransaction (transactionId : string) {
+export async function deleteTransaction (transactionId : string) {
   
   const transactionArray = await db
     .select()

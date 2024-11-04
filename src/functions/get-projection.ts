@@ -19,6 +19,7 @@ export async function getProjections(grouping: 'quarterly' | 'yearly', currentMo
 
     const result = await db
       .select({
+        projectionId: projections.id,
         month: projections.month,
         expectedIncome: sql<number>/*sql*/`SUM(${projections.expectedIncome}::numeric)`,
         actualIncome: sql<number>/*sql*/`SUM(${projections.actualIncome}::numeric)`,
@@ -31,7 +32,7 @@ export async function getProjections(grouping: 'quarterly' | 'yearly', currentMo
           sql/*sql*/`${projections.month} BETWEEN ${startMonth} AND ${endMonth}`,	
         )
       )
-      .groupBy(projections.month)
+      .groupBy(projections.month, projections.id)
       .orderBy(projections.month)
 
     const monthsInQuarter = [startMonth, startMonth + 1, endMonth]
@@ -39,6 +40,7 @@ export async function getProjections(grouping: 'quarterly' | 'yearly', currentMo
     const formattedResult = monthsInQuarter.map(month => {
       const projection = result.find(p => p.month === month);
       return {
+        id: projection?.projectionId,
         month: getMonthName(month),
         expectedIncome: Number(projection?.expectedIncome) || 0,
         actualIncome: Number(projection?.actualIncome) || 0,
@@ -62,6 +64,7 @@ export async function getProjections(grouping: 'quarterly' | 'yearly', currentMo
 
     const result = await db
       .select({
+        projectionId: projections.id,
         month: projections.month,
         expectedIncome: sql<number>/*sql*/`SUM(${projections.expectedIncome}::numeric)`,
         actualIncome: sql<number>/*sql*/`SUM(${projections.actualIncome}::numeric)`,
@@ -71,12 +74,13 @@ export async function getProjections(grouping: 'quarterly' | 'yearly', currentMo
       .where(
         eq(projections.year, currentYear),
       )
-      .groupBy(projections.month)
+      .groupBy(projections.month, projections.id)
       .orderBy(projections.month)
 
     const formattedResult = months.map(month => {
       const projection = result.find(p => p.month === month);
       return {
+        id: projection?.projectionId,
         month: getMonthName(month),  // Nome do mês (Janeiro, Fevereiro, etc.)
         expectedIncome: Number(projection?.expectedIncome) || 0, // Projeção do mês ou 0 se não existir
         actualIncome: Number(projection?.actualIncome) || 0,
