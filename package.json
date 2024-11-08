@@ -6,7 +6,7 @@
     "test": "jest",
     "dev": "tsx --env-file .env src/http/server.ts watch",
     "build": "rimraf ./build && tsc",
-    "start": "node build/http/server.js"
+    "start": "node build/src/http/server.js"
   },
   "keywords": [],
   "author": "",
