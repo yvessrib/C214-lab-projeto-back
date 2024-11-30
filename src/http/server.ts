@@ -1,10 +1,10 @@
-import fastify from 'fastify';
 import {
   serializerCompiler,
   validatorCompiler,
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 import fastifyCors from '@fastify/cors'
+import { fastify } from "fastify";
 import { createTransactionRoute } from './routes/create-transaction-route';
 import { getTransactionsRoute } from './routes/get-transactions-route';
 import { deleTransactionRoute } from './routes/delete-transaction-route';
@@ -34,13 +34,9 @@ app.register(getProjectionsRoute)
 app.register(updateProjectionRoute)
 app.register(deleteProjectionRoute)
 
-
 app.listen({
-  host: '0.0.0.0',
   port: process.env.PORT ? Number(process.env.PORT) : 3333
 }).then(() => {
   console.log('HTTP server running')
+  console.log(`Server is running on port ${process.env.PORT ? Number(process.env.PORT) : 3333}`)
 })
-
-
-

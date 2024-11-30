@@ -46,3 +46,9 @@ jobs:
     
     - name: Run Tests
       run: npm test
+
+    - name: Upload test report
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-report
+        path: test-report.html
