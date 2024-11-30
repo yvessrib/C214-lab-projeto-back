@@ -5,11 +5,11 @@ Project made for the Software Engineering discipline - C214, being a Financial C
 [![Typescript CI](https://github.com/Yvessrib/C214-lab-projeto-back/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/Yvessrib/C214-lab-projeto-back/actions/workflows/main.yml)
 
 #### Team:
- - Alice Coelho - *** - Frontend
- - Bárbara Barbieri - *** - Frontend
- - Yves Ribeiro - 1792 - Backend
+ - Alice Coelho - Frontend
+ - Bárbara Barbieri - Frontend
+ - Yves Ribeiro - Backend
 
-## Usage
+## Installing dependencies
 ```
 npm i
 ```
@@ -17,6 +17,11 @@ npm i
 ### Development
 ```
 npm run dev
+```
+
+### Tests
+```
+npm run test
 ```
 
 ### Production
